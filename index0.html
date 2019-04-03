@@ -28,14 +28,21 @@
 		var poemDisplay = document.querySelector('pre');
 		// STEP 2: Build out the event handler for the SELECT element
 		verseChoose.addEventListener('change', function() {
-		// STEP 3: Construct updateDisplay() function
 			var verse = verseChoose.value;
 			console.log(verse);
 		});
+		// STEP 3: Construct updateDisplay() function
+		function updateDisplay(verse) {
 			// STEP 4: Declare and initialize URL to point to text file(s)
+			var url = verse + ".txt";
 
 			// STEP 5: Build fetch() with promises
-
+			fetch(url).then(function(response) {
+				response.text().then(function(text){
+					poemDisplay.textContent = text;
+				});
+			});
+		};
 
 
 		// STEP 6: Initialize the app with Verse 1
