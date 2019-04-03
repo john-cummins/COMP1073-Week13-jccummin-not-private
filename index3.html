@@ -60,7 +60,11 @@
 			searchTerm.valie + '&fq=document_type:("article")';
 
 			// STEP 4: Use fetch() to pass the URL that we built as a request to the API service
-
+			fetch(url).then(function(result) {
+				return result.json();
+			}).then(function(json){
+				displayResults(json);
+			})
 		}
 
 		function displayResults(json) {
